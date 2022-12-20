@@ -1,52 +1,40 @@
 #include<bits/stdc++.h>
 #include<graphics.h>
-/*#include<time.h>
-#include<stdio.h>
-#include<windows.h>
-#include<stdlib.h>
-*/
+
 int endfunc(int e, int a);
 
 int main()
 {
-    //direction
     int gd,gm,rx=200,ry=200,x[200],y[200],d;
     for(int i = 0;i < 200 ; i++)
     {
         x[i]=0;
         y[i]=0;
     }
-    //Food eaten
     int f=1;
     int chk = 700;
-    //directions
     int dir=1;
     detectgraph(&gd,&gm);
     initgraph(&gd,&gm,"");
-    setfillstyle(1,0);//(style,color)
+    setfillstyle(SOLID_FILL,BLACK);
     x[0]=200,y[0]=200;
     d=1;
     int length = 1;
-
-    //for(;;)
     while(1)
     {
-        setfillstyle(1,0);
+        setfillstyle(SOLID_FILL,BLACK);
         bar(0,0,640,480);
-        setfillstyle(1,4);
+        setfillstyle(SOLID_FILL,YELLOW);
         bar(0,0,640,10);
         bar(0,0,10,480);
         bar(0,480,640,470);
         bar(630,10,640,480);
-           // food taken?
        if(x[0]==rx && y[0]==ry )
        {
             length += 1;
             f=f+1;
-            setfillstyle(1,0);
+            setfillstyle(SOLID_FILL,YELLOW);
             bar(rx,ry,rx+10,ry+10);
-
-            //make food
             do
             {
                 rx = rand()%630;
@@ -57,7 +45,7 @@ int main()
             rx=rx*10;
             ry=ry/10;
             ry=ry*10;
-            setfillstyle(1,4);
+            setfillstyle(SOLID_FILL,YELLOW);
         }
         bar(rx,ry,rx+10,ry+10);
         if(GetAsyncKeyState(VK_RIGHT)) d=1;
@@ -124,12 +112,13 @@ int main()
 
 int endfunc(int e,int a)
 {
-    setfillstyle(1,5);
-    e=e-2;
-    bar(0,0,640,470);
+    setfillstyle(SLASH_FILL,BLUE);
+    e=e-1;
+    bar(0,0,640,480);
     system("cls");
     if(a == 0) printf("You died outside the boundary!!!\n");
-    else if(a== 1)printf("You died into yourself!!!\n");
+    else if(a == 1)printf("You died into yourself!!!\n");
+    printf("\n");
     printf("Your score is : %d\n", e);
     getch();
     return 0;
