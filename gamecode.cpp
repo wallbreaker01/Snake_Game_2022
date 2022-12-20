@@ -1,10 +1,10 @@
 #include<bits/stdc++.h>
 #include<graphics.h>
-#include<time.h>
+/*#include<time.h>
 #include<stdio.h>
 #include<windows.h>
 #include<stdlib.h>
-
+*/
 int endfunc(int e, int a);
 
 int main()
@@ -23,16 +23,17 @@ int main()
     int dir=1;
     detectgraph(&gd,&gm);
     initgraph(&gd,&gm,"");
-    setfillstyle(1,1);//(style,color)
+    setfillstyle(1,0);//(style,color)
     x[0]=200,y[0]=200;
     d=1;
     int length = 1;
 
-    for(;;)
+    //for(;;)
+    while(1)
     {
         setfillstyle(1,0);
         bar(0,0,640,480);
-        setfillstyle(1,2);
+        setfillstyle(1,4);
         bar(0,0,640,10);
         bar(0,0,10,480);
         bar(0,480,640,470);
@@ -48,15 +49,15 @@ int main()
             //make food
             do
             {
-                rx = (1+rand()%630);
-                ry = (1+rand()%470);
+                rx = rand()%630;
+                ry = rand()%470;
             }
             while(getpixel(rx,ry)!=0 && rx > 10 && ry > 10);
             rx=rx/10;
             rx=rx*10;
             ry=ry/10;
             ry=ry*10;
-            setfillstyle(1,2);
+            setfillstyle(1,4);
         }
         bar(rx,ry,rx+10,ry+10);
         if(GetAsyncKeyState(VK_RIGHT)) d=1;
@@ -99,7 +100,7 @@ int main()
             x[i] = x[i-1];
             y[i] = y[i -1];
         }
-        delay(100);
+        delay(80);
         if(x[0] >= 640 || x[0]<=0|| y[0]<=0 || y[0]>=480)
         {
             endfunc(f,0);
